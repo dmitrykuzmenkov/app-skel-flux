@@ -23,8 +23,9 @@ module.exports = function(element) {
 
   var obj = pool.get('example');
   element.appendChild(obj.dom());
-  obj.set('text', 'Hello from JEXT!');
+
   obj.update({
+    text: 'Hello from JEXT!',
     condition: true,
     rows: rows,
     realtime: '^write something^'
@@ -41,7 +42,7 @@ module.exports = function(element) {
   d.on('click', '.js-add-button', function(ev, el) {
     rows.push({index: rows.length > 0 ? rows[rows.length - 1].index + 1 : 1, value: input_el.value});
     input_el.value = '';
-    obj.set('rows', rows);
+    obj.update({rows: rows});
   });
 
   d.on('click', '.js-remove-button', function(ev, el) {
@@ -49,11 +50,11 @@ module.exports = function(element) {
     rows = rows.filter(function(v) {
       return v.index != remove_index;
     });
-    obj.set('rows', rows);
+    obj.update({rows: rows});
   });
 
   d.on('keyup', '.js-input-realtime', function(ev, el) {
-    obj.set('realtime', el.value);
+    obj.update({realtime: el.value});
   });
 
 
