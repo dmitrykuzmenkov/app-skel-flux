@@ -1,0 +1,25 @@
+<div>
+  <span>Rendered with text: {{ text }}</span>
+  <div>
+    <input class="js-input" type="text" name="row" value="" placeholder="Write something to add"/>
+    <button class="js-add-button">Add</button>
+  </div>
+  <div for="rows">
+    Row #{{index}} with value: {{value}} <button class="js-remove-button" data-index="{{index}}">remove</button>
+  </div>
+  <div if="condition">
+    Test if condition
+  </div>
+  <div class="js-click click-block">
+    Click me to see alert
+  </div>
+  <div>
+    <input class="js-input-realtime" name="text" value="" placeholder="Realtime input change show up"/>
+    <div>
+      Your input: {{ realtime }}
+    </div>
+  </div>
+</div>
+<div for="rows">
+  Row #{{index}} with value: {{value}} <button class="js-remove-button" data-index="{{index}}">remove</button>
+</div>
