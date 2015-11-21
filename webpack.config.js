@@ -4,6 +4,7 @@ var LessClean = require('less-plugin-clean-css');
 var HtmlFile = require('html-webpack-plugin');
 
 module.exports = {
+  cache: true,
   entry: [
     './main.js',
     './main.less'
@@ -15,16 +16,20 @@ module.exports = {
   devtool: "eval-source-map",
   module: {
     loaders: [
-      { test: /\.jext$/, loader: "jext" },
-      { test: /\.(png|jpg|gif|svg)$/, loader: 'url?limit=8192&name=asset/[name].[ext]' },
       {
+        test: /\.jext$/,
+        loader: "jext"
+      }, {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'url?limit=8192&name=asset/[name].[ext]'
+      }, {
         test: /\.less$/,
         loader: ExtractText.extract(
           'css?sourceMap' +
           '!autoprefixer?browsers=last 5 version' +
           '!less?sourceMap=true&config=lessLoaderCustom'
         )
-      },
+      }
     ]
   },
   lessLoader: {
@@ -51,4 +56,4 @@ module.exports = {
     //   { from: 'web/static/assets/robots.txt' }
     // ])
   ]
-}
+};
