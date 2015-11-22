@@ -40,7 +40,6 @@ var config = {
   }
 }[process.env.ENV || 'dev'];
 
-console.log(config);
 module.exports = {
   cache: true,
   devtool: config.devtool,
