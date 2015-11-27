@@ -1,5 +1,5 @@
 var ExtractText = require('extract-text-webpack-plugin');
-var CopyFile = require('copy-webpack-plugin');
+var Copy = require('copy-webpack-plugin');
 var LessClean = require('less-plugin-clean-css');
 var HtmlFile = require('html-webpack-plugin');
 var webpack = require('webpack');
@@ -81,9 +81,9 @@ module.exports = {
       template: 'index.html',
       hash: true,
       inject: 'head'
-    }, config.html))
-    // new CopyFile([
-    //   { from: 'web/static/assets/robots.txt' }
-    // ])
+    }, config.html)),
+    new Copy([
+      { from: './asset', to: 'asset' }
+    ])
   ], config.plugins)
 };
