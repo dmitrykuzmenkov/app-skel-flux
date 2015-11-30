@@ -9,7 +9,8 @@ var config = {
     html: {},
     loaders: {
       less: 'css!autoprefixer?browsers=last 5 version' +
-        '!less?config=lessLoaderCustom'
+        '!less?config=lessLoaderCustom',
+      image: ['url?limit=8192&name=asset/[name].[ext]']
     },
     plugins: []
   },
@@ -28,7 +29,11 @@ var config = {
     loaders: {
       less: 'css?sourceMap' +
         '!autoprefixer?browsers=last 5 version' +
-        '!less?sourceMap=true&config=lessLoaderCustom'
+        '!less?sourceMap=true&config=lessLoaderCustom',
+      image: [
+        'url?limit=8192&name=asset/[name].[ext]',
+        'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "75-90", speed: 4}}'
+      ]
     },
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
@@ -58,8 +63,8 @@ module.exports = {
         test: /\.jext$/,
         loader: "jext"
       }, {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'url?limit=8192&name=asset/[name].[ext]'
+        test: /\.(png|jpe?g|gif|svg)$/,
+        loaders: config.loaders.image
       }, {
         test: /\.less$/,
         loader: ExtractText.extract(config.loaders.less)
