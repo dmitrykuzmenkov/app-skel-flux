@@ -30,7 +30,7 @@
     "html-minifier": "^1.0.0",
     "html-webpack-plugin": "^1.6.2",
     "image-webpack-loader": "^1.6.2",
-    "jext": "^0.1.8",
+    "jext": "^0.2.2",
     "jext-loader": "^1.0.3",
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
