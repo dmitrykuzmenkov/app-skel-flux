@@ -105,7 +105,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)$/,
         loaders: config.loaders.image
       }, {
-        test: /\.less$/,
+        test: /\.(less|css)$/,
         loader: ExtractText.extract(config.loaders.less)
       }
     ]
