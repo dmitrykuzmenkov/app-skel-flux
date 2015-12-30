@@ -1,16 +1,14 @@
-dispatcher = require('edispatcher');
+var dispatcher = require('edispatcher');
+var components = require('./config/component.config.js');
 
 document.addEventListener('DOMContentLoaded', function() {
-  var components = document.querySelectorAll("[component]");
-  for (var i = 0, l = components.length; i < l; i++) {
-    var component = components[i];
-    var component_name = component.getAttribute("component");
+  components.forEach(function (component) {
     try {
-      var component_constructor = require('./component/' + component_name + '/' + component_name + '.js');
-      new component_constructor(component);
+      var cc = require('./component/' + component + '/' + component + '.js');
+      new cc(document.body);
     } catch (e) {
-      console.warn('Failed to initialize component ' + component_name + '. ' + e);
+      console.warn('Failed to initialize component ' + component + '. ' + e);
     }
-  }
+  });
   dispatcher.send('components_loaded', null, 'main');
 });
