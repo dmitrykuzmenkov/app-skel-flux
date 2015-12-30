@@ -4,8 +4,29 @@ var LessClean = require('less-plugin-clean-css');
 var HtmlFile = require('html-webpack-plugin');
 var webpack = require('webpack');
 
+var ENV = process.env.ENV || 'dev';
+
+var AppResolver = {
+  apply: function(resolver) {
+    resolver.plugin('module', function (request, callback) {
+      if (request.request === 'config') {
+        var obj = {
+          path: __dirname + '/config',
+          request: 'config.' + ENV +'.js',
+          query: request.query,
+          directory: request.directory
+        };
+        this.doResolve(['file'], obj, callback);
+      } else {
+        callback();
+      }
+    });
+  }
+};
+
 var config = {
   dev: {
+    devtool: 'eval',
     html: {},
     loaders: {
       less: 'css!autoprefixer?browsers=last 5 version' +
@@ -43,7 +64,7 @@ var config = {
       })
     ]
   }
-}[process.env.ENV || 'dev'];
+}[ENV];
 
 module.exports = {
   cache: true,
@@ -77,6 +98,7 @@ module.exports = {
     ]
   },
   plugins: Object.assign([
+    new webpack.ResolverPlugin([AppResolver]),
     new webpack.PrefetchPlugin('jext'),
     new webpack.PrefetchPlugin('edispatcher'),
     new webpack.PrefetchPlugin('domd'),
