@@ -66,6 +66,24 @@ var config = {
   }
 }[ENV];
 
+// Merge plugins
+Array.prototype.push.apply(config.plugins, [
+  new webpack.ResolverPlugin([AppResolver]),
+  new webpack.PrefetchPlugin('jext'),
+  new webpack.PrefetchPlugin('edispatcher'),
+  new webpack.PrefetchPlugin('domd'),
+  new ExtractText('bundle.css'),
+  new HtmlFile(Object.assign({
+    filename: 'index.html',
+    template: 'index.html',
+    hash: true,
+    inject: 'head'
+  }, config.html)),
+  new Copy([
+    { from: './asset', to: 'asset' }
+  ])
+]);
+
 module.exports = {
   cache: true,
   devtool: config.devtool,
@@ -97,20 +115,5 @@ module.exports = {
       new LessClean({advanced: true})
     ]
   },
-  plugins: Object.assign([
-    new webpack.ResolverPlugin([AppResolver]),
-    new webpack.PrefetchPlugin('jext'),
-    new webpack.PrefetchPlugin('edispatcher'),
-    new webpack.PrefetchPlugin('domd'),
-    new ExtractText('bundle.css'),
-    new HtmlFile(Object.assign({
-      filename: 'index.html',
-      template: 'index.html',
-      hash: true,
-      inject: 'head'
-    }, config.html)),
-    new Copy([
-      { from: './asset', to: 'asset' }
-    ])
-  ], config.plugins)
+  plugins: config.plugins
 };
