@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "main": "index.html",
   "scripts": {
-    "start": "webpack-dev-server",
+    "dev": "webpack-dev-server",
+    "build": "ENV=production webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
