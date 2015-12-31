@@ -10,13 +10,19 @@ var AppResolver = {
   apply: function(resolver) {
     resolver.plugin('module', function (request, callback) {
       if (request.request === 'config') {
-        var obj = {
+        this.doResolve(['file'], {
           path: __dirname + '/config',
           request: 'config.' + ENV +'.js',
           query: request.query,
           directory: request.directory
-        };
-        this.doResolve(['file'], obj, callback);
+        }, callback);
+      } else if (request.request.indexOf('app/') === 0) {
+        this.doResolve(['file'], {
+          path: __dirname,
+          request: request.request.substring(4),
+          query: request.query,
+          directory: request.directory
+        }, callback);
       } else {
         callback();
       }
