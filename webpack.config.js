@@ -87,10 +87,7 @@ Array.prototype.push.apply(config.plugins, [
 module.exports = {
   cache: true,
   devtool: config.devtool,
-  entry: [
-    './main.js',
-    './main.less'
-  ],
+  entry: './main.js',
   output: {
     path: 'build',
     filename: 'bundle.js',

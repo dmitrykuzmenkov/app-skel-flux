@@ -1,3 +1,4 @@
+require('./main.less');
 var dispatcher = require('edispatcher');
 var components = require('./config/component.config.js');
 
