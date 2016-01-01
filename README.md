@@ -17,10 +17,19 @@ npm install
 After installation npm dependencies just start webpack-dev-server
 
 ```bash
-npm start
+npm run dev
 ```
 
 Open in your browser (http://localhost:8080/webpack-dev-server/) and develop with live reload
+
+
+## Build
+
+To build distribution to deploy use build command
+
+```
+npm run build
+```
 
 ## Philosophy
 
