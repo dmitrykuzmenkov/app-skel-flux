@@ -2,9 +2,12 @@ Flux Application Skeleton
 ======
 Skeleton for build single-page javascript powered application with flux paradigm
 
-## Installation
+## Demo
+You can watch online sample application build with flux skeleton here: http://dmitrykuzmenkov.github.io/app-skel-flux/
 
+## Installation
 Clone skeleton from git and remove git folder
+
 ```bash
 git clone git@github.com:dmitrykuzmenkov/app-skel-flux.git app
 rm -fr app/.git
@@ -13,7 +16,6 @@ npm install
 ```
 
 ## Usage
-
 After installation npm dependencies just start webpack-dev-server
 
 ```bash
@@ -24,7 +26,6 @@ Open in your browser (http://localhost:8080/webpack-dev-server/) and develop wit
 
 
 ## Build
-
 To build distribution to deploy use build command
 
 ```
@@ -32,7 +33,6 @@ npm run build
 ```
 
 ## Philosophy
-
 1. Everything is decomposited into components.
 2. Components are in component folder.
 3. Each component have in own directory main initialization module with same name as folder, less styles, jext template and other staff.
