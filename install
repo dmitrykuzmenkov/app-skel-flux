@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+app_folder=${1-.}
+git clone git@github.com:dmitrykuzmenkov/app-skel-flux.git $app_folder
+rm -fr $app_folder/.git
+old_path=$(pwd)
+cd $app_folder && npm install && cd $old_path
