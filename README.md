@@ -6,8 +6,14 @@ Skeleton for build single-page javascript powered application with flux paradigm
 You can watch online sample application build with flux skeleton here: http://dmitrykuzmenkov.github.io/app-skel-flux/
 
 ## Installation
-Clone skeleton from git and remove git folder
+Use installation script
+```bash
+curl -sS https://raw.githubusercontent.com/dmitrykuzmenkov/app-skel-flux/master/install | bash -s app
+```
 
+Where is *app* – path to folder with your future application.
+
+You also can clone repo directly.
 ```bash
 git clone git@github.com:dmitrykuzmenkov/app-skel-flux.git app
 rm -fr app/.git
