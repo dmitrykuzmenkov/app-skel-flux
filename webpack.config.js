@@ -118,5 +118,9 @@ module.exports = {
       new LessClean({advanced: true})
     ]
   },
-  plugins: config.plugins
+  plugins: config.plugins,
+  watchOptions: {
+    poll: 1000,
+    aggregateTimeout: 1000
+  }
 };
