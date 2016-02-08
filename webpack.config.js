@@ -35,7 +35,7 @@ var config = {
     devtool: 'eval',
     html: {},
     loaders: {
-      less: 'css!autoprefixer?browsers=last 5 version' +
+      less: 'css!postcss?browsers=last 5 version' +
         '!less?config=lessLoaderCustom',
       image: ['url?limit=8192&name=asset/[name].[ext]']
     },
@@ -55,7 +55,7 @@ var config = {
     },
     loaders: {
       less: 'css?sourceMap' +
-        '!autoprefixer?browsers=last 5 version' +
+        '!postcss?browsers=last 5 version' +
         '!less?sourceMap=true&config=lessLoaderCustom',
       image: [
         'url?limit=8192&name=asset/[name].[ext]',
